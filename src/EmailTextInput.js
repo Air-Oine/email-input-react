@@ -24,11 +24,11 @@ export default class EmailTextInput extends Component {
         const regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
         //Validation of email input
-        if(lodash.isEmpty(text.text)) {
+        if(lodash.isEmpty(text)) {
             this.textError = "L'email est requis"
             textValid = false
         }
-        else if(!text.text.match(regex)) {
+        else if(!text.match(regex)) {
             this.textError = "L'email est invalide"
             textValid = false
         }
@@ -55,7 +55,7 @@ export default class EmailTextInput extends Component {
         <View>
             <TextInput
                 style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                onEndEditing={(text) => this.onEndEditing({text: text.nativeEvent.text})}
+                onEndEditing={(text) => this.onEndEditing(text.nativeEvent.text)}
                 keyboardType='email-address'
                 autoFocus={true}
                 value={this.text}
